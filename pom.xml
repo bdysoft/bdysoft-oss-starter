@@ -19,6 +19,7 @@
         <qcloud.cos.version>4.4</qcloud.cos.version>
         <fastjson.version>1.2.72</fastjson.version>
         <hutool.version>5.7.2</hutool.version>
+        <mini-io.version>7.1.0</mini-io.version>
     </properties>
 
     <dependencies>
@@ -59,6 +60,11 @@
                     <artifactId>slf4j-log4j12</artifactId>
                 </exclusion>
             </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>io.minio</groupId>
+            <artifactId>minio</artifactId>
+            <version>${mini-io.version}</version>
         </dependency>
         <dependency>
             <groupId>com.alibaba</groupId>

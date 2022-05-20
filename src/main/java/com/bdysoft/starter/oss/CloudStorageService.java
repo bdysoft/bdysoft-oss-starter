@@ -1,9 +1,7 @@
 package com.bdysoft.starter.oss;
 
-import com.bdysoft.starter.oss.cloud.AbstractCloudStorageService;
-import com.bdysoft.starter.oss.cloud.AliyunAbstractCloudStorageService;
-import com.bdysoft.starter.oss.cloud.QcloudAbstractCloudStorageService;
-import com.bdysoft.starter.oss.cloud.QiniuAbstractCloudStorageService;
+import com.bdysoft.starter.oss.cloud.*;
+import com.bdysoft.starter.oss.enums.OssTypeEnum;
 
 /**
  * @author lvwei
@@ -17,14 +15,17 @@ public class CloudStorageService {
     }
 
     public AbstractCloudStorageService build() {
-        if (this.config.getType() == 1) {
+        if (this.config.getType().equals(OssTypeEnum.QINIU.getOssType())) {
             return new QiniuAbstractCloudStorageService(config);
         }
-        if (config.getType() == 2) {
+        if (config.getType().equals(OssTypeEnum.ALIYUN.getOssType())) {
             return new AliyunAbstractCloudStorageService(config);
         }
-        if (config.getType() == 3) {
+        if (config.getType().equals(OssTypeEnum.QCLOUD.getOssType())) {
             return new QcloudAbstractCloudStorageService(config);
+        }
+        if (config.getType().equals(OssTypeEnum.MINIIO.getOssType())){
+            return new MiniIoAbstractCloudStorageService(config);
         }
         return null;
     }

@@ -4,6 +4,8 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
  * ConfigurationProperties注解是读取oss为前缀的配置
+ *
+ * @author lvwei
  */
 @ConfigurationProperties(prefix = "oss")
 public class CloudStorageConfigProperties {
@@ -89,6 +91,66 @@ public class CloudStorageConfigProperties {
      * 腾讯云COS所属地区
      */
     private String qcloudRegion;
+    /**
+     * MiniIoDomain
+     */
+    private String miniIoDomain;
+    /**
+     * MINIO_BUCKET
+     */
+    private String minioBucket;
+    /**
+     * MiniIoEndpoint
+     */
+    private String miniIoEndpoint;
+    /**
+     * miniIoAccesskey
+     */
+    private String miniIoAccesskey;
+    /**
+     * miniIoSecretKey
+     */
+    private String miniIoSecretKey;
+
+    public String getMiniIoDomain() {
+        return miniIoDomain;
+    }
+
+    public void setMiniIoDomain(String miniIoDomain) {
+        this.miniIoDomain = miniIoDomain;
+    }
+
+    public String getMinioBucket() {
+        return minioBucket;
+    }
+
+    public void setMinioBucket(String minioBucket) {
+        this.minioBucket = minioBucket;
+    }
+
+    public String getMiniIoEndpoint() {
+        return miniIoEndpoint;
+    }
+
+    public void setMiniIoEndpoint(String miniIoEndpoint) {
+        this.miniIoEndpoint = miniIoEndpoint;
+    }
+
+    public String getMiniIoAccesskey() {
+        return miniIoAccesskey;
+    }
+
+    public void setMiniIoAccesskey(String miniIoAccesskey) {
+        this.miniIoAccesskey = miniIoAccesskey;
+    }
+
+    public String getMiniIoSecretKey() {
+        return miniIoSecretKey;
+    }
+
+    public void setMiniIoSecretKey(String miniIoSecretKey) {
+        this.miniIoSecretKey = miniIoSecretKey;
+    }
 
     public Integer getType() {
         return type;

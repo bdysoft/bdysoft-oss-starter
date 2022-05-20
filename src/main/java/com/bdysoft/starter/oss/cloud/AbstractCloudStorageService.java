@@ -10,7 +10,7 @@ import java.io.InputStream;
 import java.util.Date;
 
 /**
- * 云存储(支持七牛、阿里云、腾讯云、又拍云)
+ * 云存储(支持七牛、阿里云、腾讯云)
  *
  * @author Lvwei lvwei@bdysoft.com
  */
@@ -50,6 +50,7 @@ public abstract class AbstractCloudStorageService {
      *
      * @param data   文件字节数组
      * @param suffix 后缀
+     * @return 返回上传结果
      */
     public abstract CloudStorageUploadResult uploadSuffix(byte[] data, String suffix);
 

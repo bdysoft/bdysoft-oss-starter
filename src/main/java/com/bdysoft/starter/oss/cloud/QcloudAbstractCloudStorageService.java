@@ -2,6 +2,7 @@ package com.bdysoft.starter.oss.cloud;
 
 import com.alibaba.fastjson.JSONObject;
 import com.bdysoft.starter.oss.CloudStorageConfigProperties;
+import com.bdysoft.starter.oss.enums.OssTypeEnum;
 import com.bdysoft.starter.oss.result.CloudStorageUploadResult;
 import com.qcloud.cos.COSClient;
 import com.qcloud.cos.ClientConfig;
@@ -19,10 +20,9 @@ import java.io.InputStream;
  */
 public class QcloudAbstractCloudStorageService extends AbstractCloudStorageService {
     private COSClient client;
-    private final static String STORAGE = "qcloud";
 
     public QcloudAbstractCloudStorageService(CloudStorageConfigProperties config) {
-        this.config = config;        //初始化
+        this.config = config;
         init();
     }
 
@@ -45,7 +45,7 @@ public class QcloudAbstractCloudStorageService extends AbstractCloudStorageServi
             path = "/" + path;
         }
         CloudStorageUploadResult cloudStorageUploadResult = new CloudStorageUploadResult();
-        cloudStorageUploadResult.setStorage(STORAGE);
+        cloudStorageUploadResult.setStorage(OssTypeEnum.QCLOUD.getOssName());
         cloudStorageUploadResult.setDomain(config.getQcloudDomain());
         cloudStorageUploadResult.setExternalUrl(config.getQcloudDomain() + "/" + path);
         cloudStorageUploadResult.setPreviewUrl(config.getAliyunDomain() + "/" + path);
@@ -66,7 +66,7 @@ public class QcloudAbstractCloudStorageService extends AbstractCloudStorageServi
     @Override
     public CloudStorageUploadResult upload(InputStream inputStream, String path) {
         CloudStorageUploadResult cloudStorageUploadResult = new CloudStorageUploadResult();
-        cloudStorageUploadResult.setStorage(STORAGE);
+        cloudStorageUploadResult.setStorage(OssTypeEnum.QCLOUD.getOssName());
         cloudStorageUploadResult.setDomain(config.getQcloudDomain());
         try {
             byte[] data = IOUtils.toByteArray(inputStream);

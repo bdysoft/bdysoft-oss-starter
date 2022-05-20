@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Configuration;
  * @Configuration：标识此类为配置类
  * @ConditionalOnClass: 表示只有指定的class在classpath上时才能被注册
  * @EnableConfigurationProperties: 激活@ConfigurationProperties
+ * @author lvwei
  */
 @Configuration
 @ConditionalOnClass(CloudStorageService.class)

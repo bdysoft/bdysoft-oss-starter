@@ -2,6 +2,7 @@ package com.bdysoft.starter.oss.cloud;
 
 import com.aliyun.oss.OSSClient;
 import com.bdysoft.starter.oss.CloudStorageConfigProperties;
+import com.bdysoft.starter.oss.enums.OssTypeEnum;
 import com.bdysoft.starter.oss.result.CloudStorageUploadResult;
 
 import java.io.ByteArrayInputStream;
@@ -14,7 +15,6 @@ import java.io.InputStream;
  */
 public class AliyunAbstractCloudStorageService extends AbstractCloudStorageService {
     private OSSClient client;
-    private final static String STORAGE = "aliyun";
 
     public AliyunAbstractCloudStorageService(CloudStorageConfigProperties config) {
         this.config = config;
@@ -35,7 +35,7 @@ public class AliyunAbstractCloudStorageService extends AbstractCloudStorageServi
     @Override
     public CloudStorageUploadResult upload(InputStream inputStream, String path) {
         CloudStorageUploadResult cloudStorageUploadResult = new CloudStorageUploadResult();
-        cloudStorageUploadResult.setStorage(STORAGE);
+        cloudStorageUploadResult.setStorage(OssTypeEnum.ALIYUN.getOssName());
         cloudStorageUploadResult.setDomain(config.getAliyunDomain());
         cloudStorageUploadResult.setExternalUrl(config.getAliyunDomain() + "/" + path);
         cloudStorageUploadResult.setPreviewUrl(config.getAliyunDomain() + "/" + path);

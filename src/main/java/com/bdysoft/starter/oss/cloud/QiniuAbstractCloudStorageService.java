@@ -1,6 +1,7 @@
 package com.bdysoft.starter.oss.cloud;
 
 import com.bdysoft.starter.oss.CloudStorageConfigProperties;
+import com.bdysoft.starter.oss.enums.OssTypeEnum;
 import com.bdysoft.starter.oss.result.CloudStorageUploadResult;
 import com.qiniu.common.Zone;
 import com.qiniu.http.Response;
@@ -19,11 +20,10 @@ import java.io.InputStream;
  */
 public class QiniuAbstractCloudStorageService extends AbstractCloudStorageService {
     private UploadManager uploadManager;
-    private final static String STORAGE = "qiniu";
     private String token;
 
     public QiniuAbstractCloudStorageService(CloudStorageConfigProperties config) {
-        this.config = config;        //初始化
+        this.config = config;
         init();
     }
 
@@ -36,7 +36,7 @@ public class QiniuAbstractCloudStorageService extends AbstractCloudStorageServic
     @Override
     public CloudStorageUploadResult upload(byte[] data, String path) {
         CloudStorageUploadResult cloudStorageUploadResult = new CloudStorageUploadResult();
-        cloudStorageUploadResult.setStorage(STORAGE);
+        cloudStorageUploadResult.setStorage(OssTypeEnum.QINIU.getOssName());
         cloudStorageUploadResult.setDomain(config.getQiniuDomain());
         cloudStorageUploadResult.setExternalUrl(config.getQiniuDomain() + "/" + path);
         cloudStorageUploadResult.setPreviewUrl(config.getAliyunDomain() + "/" + path);
@@ -60,7 +60,7 @@ public class QiniuAbstractCloudStorageService extends AbstractCloudStorageServic
     @Override
     public CloudStorageUploadResult upload(InputStream inputStream, String path) {
         CloudStorageUploadResult cloudStorageUploadResult = new CloudStorageUploadResult();
-        cloudStorageUploadResult.setStorage(STORAGE);
+        cloudStorageUploadResult.setStorage(OssTypeEnum.QINIU.getOssName());
         cloudStorageUploadResult.setDomain(config.getQiniuDomain());
         try {
             byte[] data = IOUtils.toByteArray(inputStream);
