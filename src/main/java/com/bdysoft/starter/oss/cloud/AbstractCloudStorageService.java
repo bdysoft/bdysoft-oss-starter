@@ -10,7 +10,7 @@ import java.io.InputStream;
 import java.util.Date;
 
 /**
- * 云存储(支持七牛、阿里云、腾讯云)
+ * 云存储(支持七牛、阿里云、腾讯云、minio)
  *
  * @author Lvwei lvwei@bdysoft.com
  */
